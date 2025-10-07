@@ -20,6 +20,7 @@ Complications let us show **one or two critical metrics** with strong visual aff
 * **Ambient clarity:** simplified elements in ambient mode reduce visual clutter while preserving status and saving battery.
 
 <img src="docs/watchface_ambient.png" alt="Ambient – Diversify" width="360">
+
 ---
 
 ## Complications in this watch face
