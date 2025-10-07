@@ -7,7 +7,8 @@ A watch face is the home screen of a smartwatch. On Wear OS, it renders time/dat
 
 ## Preview
 
-![Active mode – Diversify Watch Face](docs/watchfaceinstructions.png)
+<img src="docs/watchfaceinstructions.png" alt="Active mode – Diversify" width="360">
+
 ![Ambient mode – Diversify Watch Face](docs/watchface.png)
 
 ---
