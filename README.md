@@ -114,7 +114,8 @@ MIT © 2025 Guillem Cornella — see the [LICENSE](LICENSE) file for details.
 ---
 
 ## Citation / Acknowledgments
-If you use this code or ideas, please cite this repo or my Google Scholar.
+If you use this code or ideas, please cite this repo or my [Google Scholar profile](https://scholar.google.com/citations?hl=en&user=8V7UwdIAAAAJ).
+
 
 ```bibtex
 @software{cornella-barba2025diversify,
