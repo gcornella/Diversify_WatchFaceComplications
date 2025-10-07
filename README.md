@@ -141,7 +141,7 @@ If you use this code or ideas, please cite this repo or my Google Scholar.
 ---
 
 ### Appendix: Slot Map
-<img src="docs/watchfaceslots.png" alt="Slots – Diversify" width="360">
+<img src="docs/watchfaceSlots.png" alt="Slots – Diversify" width="360">
 
 | Slot | Type         | Purpose          | Default Provider                                 |
 | ---- | ------------ | ---------------- |--------------------------------------------------|
