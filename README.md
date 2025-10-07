@@ -1,7 +1,6 @@
 # Diversify Watch Face 
 
-> I created a watch face for Samsung Wear OS (Android) enhancing user-experience and leveraging human factors design to digital health and stroke rehabilitation. It’s a clean, complication-driven face (Android Watch Face Format XML + custom providers) that supports an app counting upper-extremity movement, with a progress ring for the daily goal and a tap target suggesting proposed exercises.
-A watch face is the home screen of a smartwatch. On Wear OS, it renders time/date and can surface **live data “complications”**; small UI regions powered by system or app-provided data sources (steps, goals, battery, custom metrics, etc.). A well-designed watch face lets users glance key information with **zero navigation** and **near-zero cognitive load**.
+> I created a watch face for Samsung Wear OS (Android) enhancing user-experience and leveraging human factors design to digital health and stroke rehabilitation. It’s a clean, complication-driven face (Android Watch Face Format XML + custom providers) that supports an app for counting upper-extremity movement. A watch face is the home screen of a smartwatch. On Wear OS, it renders time/date and can surface **live data “complications”**; small UI regions powered by system or app-provided data sources (steps, goals, battery, custom metrics, etc.). A well-designed watch face lets users glance key information with **zero navigation** and **near-zero cognitive load**.
 
 ---
 
@@ -16,10 +15,11 @@ A watch face is the home screen of a smartwatch. On Wear OS, it renders time/dat
 Complications let us show **one or two critical metrics** with strong visual affordances, instead of burying information in menus. For people in stroke rehabilitation, this is especially important:
 
 * **Good UI:** fewer items, bigger type, high contrast.
-* **Progress cues:** **RANGED_VALUE** progress rings provide immediate “how far am I?” feedback without reading, which has been proven to be beneficial in rehabilitation..
-* **Plain language labels:** **SHORT_TEXT** lets us annotate the metric (“active”, “wear time”, “battery”).
+* **Progress cues:** **RANGED_VALUE** progress rings provide immediate “how far am I?” feedback, which has been proven to be beneficial in rehabilitation.
+* **Plain language labels:** **SHORT_TEXT** lets us annotate the metrics (“active”, “wear time”, “battery”).
 * **Ambient clarity:** simplified elements in ambient mode reduce visual clutter while preserving status and saving battery.
 
+<img src="docs/watchface_ambient.png" alt="Ambient – Diversify" width="360">
 ---
 
 ## Complications in this watch face
@@ -28,32 +28,26 @@ This repo’s example emphasizes: **one primary progress ring**, **two supportin
 * `watchface.xml` — a complete **Watch Face Format** XML that defines:
 
     * A **RANGED_VALUE** progress ring (e.g., “active movement minutes”, “therapy goal”, etc.).
-    * A **SHORT_TEXT** left complication (e.g., emoji + label such as “exercises”).
-    * A **RANGED_VALUE** top complication for **wear time** (minutes/hours on wrist).
+    * A **SHORT_TEXT** left complication (e.g., emoji + label such as “exercises”) which is tappable.
+    * A **RANGED_VALUE** top complication for **wear time** (minutes/hours on the wrist).
     * A **RANGED_VALUE** right complication for **battery** indicator.
     * Large, legible **digital time** and **date**.
     * Color **theme configuration** users can select.
 
-You can plug in your own complication providers or use the defaults included.
+You can plug in your own complication providers or use the defaults included in /providers.
 
 ### RANGED_VALUE
-
-* **What it is:** Numeric value between **min** and **max**; perfect for goals and progress.
-* **How it renders here:** **Circular progress rings** with labels, plus value readouts (e.g., “2h15’”).
-* **Where used:**
-
-    * **Slot 0**: Full-screen main progress (**MyProgressComplicationProviderService**).
-    * **Slot 2**: **Wear time** ring (**MyWearTimeComplicationProviderService**).
+* Numeric value between **min** and **max**; perfect for goals and progress. Rendered using circular progress rings with labels, plus time value readouts (e.g., “2h15’”).
+* **Where is it used?**
+    * **Slot 0**: **Main progress** ring (**providers/MyProgressComplicationProviderService**).
+    * **Slot 2**: **Wear time** ring (**providers/MyWearTimeComplicationProviderService**).
     * **Slot 3**: **Battery** ring (**System: WATCH_BATTERY** by default).
 
 ### SHORT_TEXT
-
-* **What it is:** Brief text string (optionally with an icon/emoji).
-* **How it renders here:** Centered emoji/text inside a slim ring, plus a bottom caption.
-* **Where used:**
-
-    * **Slot 1**: Left emoji/text that opens proposed exercises (**MyComplicationProviderService**).
-    * **Slot 4**: Restart/status text (**MyServiceAliveCheckComplicationProviderService**) inside a pressable circular region.
+* Brief text string (optionally with an icon/emoji). Rendered using a centered emoji/text inside a slim ring, plus a bottom caption.
+* **Where is it used?**
+    * **Slot 1**: Left emoji/text that opens proposed exercises (**providers/MyComplicationProviderService**).
+    * **Slot 4**: Restart/status text (**providers/MyServiceAliveCheckComplicationProviderService**) inside a pressable circular region.
 
 > The XML already specifies **default providers** so the face remains useful even without your custom services (e.g., steps, battery).
 
@@ -62,7 +56,6 @@ You can plug in your own complication providers or use the defaults included.
 ## Health-oriented UI principles baked into the XML
 
 * **Single dominant metric:** A larger ring (Slot 0) makes the primary health goal unmistakable.
-* **Big, readable time & date:** The clock sits on top of everything for constant visibility.
 * **Ambient mode simplification:** Rings/text fade or move in ambient for clean low-power glanceability.
 * **Color themes:** A light set of curated palettes supports contrast preferences and situational lighting.
 * **Tap regions sized generously:** Interactive/centered areas (e.g., Restart) are easy to hit.
@@ -87,7 +80,7 @@ You can plug in your own complication providers or use the defaults included.
 ---
 
 ## How to plug in your data
-> Take a look at my providers. You can change them to access your data
+> Take a look at my providers. You can change them to access your own datasets. I am using Room datasets.
 * **MyProgressComplicationProviderService** → emits a `RANGED_VALUE` (e.g., active minutes toward goal).
 * **MyWearTimeComplicationProviderService** → emits a `RANGED_VALUE` derived from daily “watch-worn” minutes.
 * **MyComplicationProviderService** → emits a `SHORT_TEXT` (emoji or brief label).
@@ -99,13 +92,6 @@ You can plug in your own complication providers or use the defaults included.
 * **Face basics:** 450×450 **DIGITAL** watch face.
 * **Themes:** User-selectable palettes via `themeColor`; reference colors as `[CONFIGURATION.themeColor.N]`.
 * **Clock & date:** Shows date and time, with a thinner font in ambient.
-
-**Complication slots**
-* **Slot 0 — RANGED_VALUE (Main progress ring):** custom provider; circular bounds; sweep angle; value shown as `h'm` and label “active”; rendered only when data exists.
-* **Slot 1 — SHORT_TEXT (Left emoji/label):** custom provider; circular bounds; red border, emoji/text, “exercises”; only shown in active mode.
-* **Slot 2 — RANGED_VALUE (Wear time, top):** custom wear-time; ring + watch icon + `h'm` + “wear time”; only shown in active mode.
-* **Slot 3 — RANGED_VALUE (Battery, right):** system WATCH_BATTERY; ring + icon + `%` + “battery”; active-only.
-* **Slot 4 — SHORT_TEXT (Restart, bottom-center):** tap-enabled button; gray border + green fill + provider text.
 
 **Useful to know**
 * `<UserConfigurations>` with `ColorConfiguration` (theme options).
