@@ -24,7 +24,7 @@
   Min Wear OS: 4+ (Galaxy Watch 4/5/6 tested)
   License: MIT
   Author: Guillem Cornella i Barba • University of California, Irvine (2025)
-  Repo: https://github.com/<your-org>/<your-repo> (update once public)
+  Repo: https://github.com/gcornella/Diversify_WatchFaceComplications
 -->
 
 <!--
@@ -669,4 +669,5 @@
 
 
     </Scene>
+
 </WatchFace>
