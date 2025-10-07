@@ -137,11 +137,12 @@ If you use this code or ideas, please cite this repo or my Google Scholar.
   url     = {https://github.com/gcornella/Diversify_WatchFaceComplications},
   version = {v1.0.0}
 }
+```
 
 ---
 
 ### Appendix: Slot Map
-
+<img src="docs/watchfaceSlots.png" alt="Slots – Diversify" width="360">
 | Slot | Type         | Purpose          | Default Provider                                 |
 | ---- | ------------ | ---------------- |--------------------------------------------------|
 | 0    | RANGED_VALUE | Primary progress | `MyProgressComplicationProviderService`          |
@@ -149,8 +150,6 @@ If you use this code or ideas, please cite this repo or my Google Scholar.
 | 2    | RANGED_VALUE | Wear time        | `MyWearTimeComplicationProviderService`          |
 | 3    | RANGED_VALUE | Battery          | System `WATCH_BATTERY`                           |
 | 4    | SHORT_TEXT   | Restart/Status   | `MyServiceAliveCheckComplicationProviderService` |
-
-<img src="docs/watchfaceSlots.png" alt="Slots – Diversify" width="360">
 
 ---
 
