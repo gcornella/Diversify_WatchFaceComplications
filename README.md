@@ -144,18 +144,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 ---
 
 ## Citation / Acknowledgments
 If you use this code or ideas, please cite this repo or my Google Scholar.
 
 ```bibtex
-@software{cornella2025diversify,
-  author  = {Cornella i Barba, Guillem},
+@software{cornella-barba2025diversify,
+  author  = {Cornella-Barba, Guillem},
   title   = {Diversify Watch Face: A complication-driven Wear OS face for stroke rehabilitation},
   year    = {2025},
-  url     = {https://github.com/<org>/<repo>},
+  url     = {https://github.com/gcornella/Diversify_WatchFaceComplications},
   version = {v1.0.0}
 }
 
