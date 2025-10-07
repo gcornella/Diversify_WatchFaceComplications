@@ -72,7 +72,7 @@ You can plug in your own complication providers or use the defaults included.
 ## File layout
 
 ```
-├── watchface.xml                # The Watch Face Format definition (this repo’s core)
+├── watchface.xml                # The Watch Face Format definition (this repo’s core). Inside the project --> app/watchface/src/main/res/raw
 ├── README.md                    # This file
 ├── docs/
 │   ├── watchfaceinstructions.png
