@@ -8,6 +8,7 @@ A watch face is the home screen of a smartwatch. On Wear OS, it renders time/dat
 ## Preview
 
 <img src="docs/watchfaceinstructions.png" alt="Active mode – Diversify" width="360">
+
 ---
 
 ## Why complications? (And why this matters for stroke recovery)
@@ -58,7 +59,7 @@ You can plug in your own complication providers or use the defaults included.
 
 ---
 
-## 7) Health-oriented UI principles baked into the XML
+## Health-oriented UI principles baked into the XML
 
 * **Single dominant metric:** A larger ring (Slot 0) makes the primary health goal unmistakable.
 * **Big, readable time & date:** The clock sits on top of everything for constant visibility.
@@ -68,17 +69,16 @@ You can plug in your own complication providers or use the defaults included.
 
 ---
 
-## File layout (suggested)
+## File layout
 
 ```
-.
 ├── watchface.xml                # The Watch Face Format definition (this repo’s core)
 ├── README.md                    # This file
 ├── docs/
-│   ├── screenshot_active.png
-│   ├── screenshot_ambient.png
-│   └── architecture.png         # (optional) show slot layout
-└── providers/                   # (optional) your complication provider code (Kotlin/Java)
+│   ├── watchfaceinstructions.png
+│   ├── watchface_ambient.png
+└── providers/                   # My kotlin complication providers code
+    ├── ComplicationProviderService.kt 
     ├── MyProgressComplicationProviderService.kt
     ├── MyWearTimeComplicationProviderService.kt
     └── MyServiceAliveCheckComplicationProviderService.kt
@@ -87,19 +87,11 @@ You can plug in your own complication providers or use the defaults included.
 ---
 
 ## How to plug in your data
-
-> You will add these later—this section is just a placeholder for your future docs.
-
+> Take a look at my providers. You can change them to access your data
 * **MyProgressComplicationProviderService** → emits a `RANGED_VALUE` (e.g., active minutes toward goal).
 * **MyWearTimeComplicationProviderService** → emits a `RANGED_VALUE` derived from daily “watch-worn” minutes.
 * **MyComplicationProviderService** → emits a `SHORT_TEXT` (emoji or brief label).
 * **MyServiceAliveCheckComplicationProviderService** → emits status text (e.g., “RESTART”/“ALIVE”) as `SHORT_TEXT`.
-
-You’ll document:
-
-* How you compute `min`, `max`, and `value` for each `RANGED_VALUE`.
-* Units and expected ranges.
-* Any privacy or data-sharing considerations for health metrics.
 
 ---
 
@@ -125,7 +117,7 @@ You’ll document:
 * **BoundingOval** defines circular clip/tap regions (recommended for ring/round UI).
 * **Transform endAngle** maps normalized value → 0–360°.
 * `"%sh%s'"` template converts total minutes → hours:minutes.
-* 
+  
 ---
 
 ## License
@@ -158,13 +150,13 @@ THE SOFTWARE.
 ## Citation / Acknowledgments
 If you use this code or ideas, please cite this repo or my Google Scholar.
 
-@software{CornellaBarba2025DiversifyWatchFace,
-author  = {Cornella-Barba, Guillem},
-title   = {Diversify Watch Face: A complication-driven Wear OS face for stroke rehabilitation},
-year    = {2025},
-url     = {https://github.com/<org>/<repo>},
-scholar = {https://scholar.google.com/citations?hl=en&user=8V7UwdIAAAAJ},
-version = {v1.0.0}
+```bibtex
+@software{cornella2025diversify,
+  author  = {Cornella i Barba, Guillem},
+  title   = {Diversify Watch Face: A complication-driven Wear OS face for stroke rehabilitation},
+  year    = {2025},
+  url     = {https://github.com/<org>/<repo>},
+  version = {v1.0.0}
 }
 
 ---
